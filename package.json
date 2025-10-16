@@ -2,11 +2,11 @@
   "name": "alephstudio-portfolio",
   "version": "1.0.0",
   "description": "ALEPH Studio Portfolio Website with MongoDB integration",
-  "main": "server.js",
+  "main": "public/js/server.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node public/js/server.js",
+    "dev": "node public/js/server.js"
   },
   "dependencies": {
     "express": "^4.18.2",

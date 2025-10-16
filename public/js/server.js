@@ -12,7 +12,12 @@ const DB_NAME = process.env.DB_NAME || 'portfolioDB';
 const MONGO_URI = process.env.MONGO_URI;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
 
-app.use(cors({ origin: CORS_ORIGIN, credentials: false }));
+app.use(cors({ 
+  origin: ['https://ljy9386.github.io', 'http://localhost:3000', '*'], 
+  credentials: false,
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 let client; let db;

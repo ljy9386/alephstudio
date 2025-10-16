@@ -84,17 +84,16 @@
 
     // ===== Mongo Helper =====
     async function fetchMongo(method, collection, data = null, query = {}) {
-        const url = new URL(API_BASE_URL, window.location.origin);
-        url.searchParams.set('db', DB_NAME);
+        const url = new URL(API_BASE_URL);
         url.searchParams.set('collection', collection);
         if (query && Object.keys(query).length) {
-            url.searchParams.set('query', JSON.stringify(query.filter || {}));
+            if (query.filter) url.searchParams.set('query', JSON.stringify(query.filter));
             if (query.sort) url.searchParams.set('sort', JSON.stringify(query.sort));
             if (query.limit) url.searchParams.set('limit', String(query.limit));
             if (query.skip) url.searchParams.set('skip', String(query.skip));
         }
         const options = { method, headers: { 'Content-Type': 'application/json' } };
-        if (data) options.body = JSON.stringify({ db: DB_NAME, collection, document: data });
+        if (data) options.body = JSON.stringify({ document: data });
         const res = await fetch(url.toString(), options);
         if (!res.ok) throw new Error('Mongo API error: ' + res.status);
         return await res.json();
@@ -145,8 +144,7 @@
     async function deleteMessage(id) {
         if (!confirm('정말 삭제하시겠습니까?')) return;
         try {
-            const url = new URL(API_BASE_URL, window.location.origin);
-            url.searchParams.set('db', DB_NAME);
+            const url = new URL(API_BASE_URL);
             url.searchParams.set('collection', COLLECTION_NAME);
             url.searchParams.set('id', id);
             
