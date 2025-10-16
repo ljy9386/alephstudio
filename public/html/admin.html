@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Messages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg:#0b0c10; --panel:#0f1115; --ink:#e5e7eb; --muted:#9aa0a6; --acc:#7fff57; }
+        * { box-sizing:border-box; }
+        html,body { height:100%; }
+        body { margin:0; background:linear-gradient(135deg,#0b0c10 0%,#111318 100%); color:var(--ink); font-family:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,sans-serif; }
+        .wrap { max-width:1200px; margin:0 auto; padding:48px 24px; }
+        h1 { margin:0 0 18px; font-size:22px; font-weight:800; letter-spacing:.4px; }
+        .desc { margin:0 0 24px; color:var(--muted); font-size:13px; }
+        .panel { background:var(--panel); border:1px solid #1b1f2a; border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.45); }
+        table { width:100%; border-collapse:collapse; font-size:13px; }
+        thead { background:#0f1219; }
+        th, td { padding:14px 16px; text-align:left; border-bottom:1px solid #1b2130; vertical-align:top; }
+        th { color:#cbd5e1; font-weight:600; letter-spacing:.3px; }
+        tbody tr:hover { background:#0e1118; }
+        .time { color:var(--muted); white-space:nowrap; }
+        .badge { display:inline-block; padding:2px 6px; border:1px solid #263044; border-radius:6px; color:#aab3c2; font-size:11px; }
+
+        /* 로그인 오버레이 */
+        .overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:radial-gradient(1200px 600px at 20% -10%, rgba(127,255,87,.06), transparent), rgba(5,6,8,.85); backdrop-filter: blur(6px); z-index:9999; }
+        .login { width:360px; background:#0e1015; border:1px solid #1b2130; border-radius:14px; padding:24px; box-shadow:0 30px 80px rgba(0,0,0,.6); }
+        .login h2 { margin:0 0 14px; font-size:18px; font-weight:800; }
+        .login p { margin:0 0 16px; color:#a1a7b3; font-size:12px; }
+        .field { display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+        .label { font-size:12px; color:#b8c1cc; }
+        .input { height:40px; padding:0 12px; background:#0c0f14; color:#e5e7eb; border:1px solid #1f2636; border-radius:10px; outline:none; }
+        .input:focus { border-color:#33415c; box-shadow:0 0 0 3px rgba(127,255,87,.12); }
+        .btn { width:100%; height:42px; background:#12161d; color:#e5e7eb; border:1px solid #263044; border-radius:10px; font-weight:700; cursor:pointer; }
+        .btn:hover { background:#151b24; }
+        .err { margin-top:10px; color:#ff6b6b; font-size:12px; min-height:16px; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>관리자 대시보드</h1>
+        <p class="desc">문의 메시지를 조회합니다. 최신 순으로 정렬됩니다.</p>
+        <div class="panel">
+            <table aria-label="messages table">
+                <thead>
+                        <tr>
+                            <th>수신 시간</th>
+                            <th>NAME</th>
+                            <th>E-MAIL</th>
+                            <th>MESSAGE</th>
+                            <th>삭제</th>
+                        </tr>
+                </thead>
+                <tbody id="messages-container"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 다크 로그인 오버레이 -->
+    <div class="overlay" id="login-overlay" aria-modal="true" role="dialog">
+        <div class="login">
+            <h2>ACCESS REQUIRED</h2>
+            <p>아이디와 비밀번호를 입력하세요.</p>
+            <div class="field">
+                <label class="label" for="admin-id">id :</label>
+                <input class="input" id="admin-id" type="text" autocomplete="off" placeholder="아이디">
+            </div>
+            <div class="field">
+                <label class="label" for="admin-pw">password :</label>
+                <input class="input" id="admin-pw" type="password" autocomplete="off" placeholder="비밀번호">
+            </div>
+            <button class="btn" id="login-btn">ENTER</button>
+            <div class="err" id="login-err" role="status" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <script>
+    // ===== Settings =====
+    const API_BASE_URL = 'http://localhost:4000/api/v1/mongo/collection';
+    const DB_NAME = 'portfolioDB';
+    const COLLECTION_NAME = 'messages';
+
+    // ===== Mongo Helper =====
+    async function fetchMongo(method, collection, data = null, query = {}) {
+        const url = new URL(API_BASE_URL, window.location.origin);
+        url.searchParams.set('db', DB_NAME);
+        url.searchParams.set('collection', collection);
+        if (query && Object.keys(query).length) {
+            url.searchParams.set('query', JSON.stringify(query.filter || {}));
+            if (query.sort) url.searchParams.set('sort', JSON.stringify(query.sort));
+            if (query.limit) url.searchParams.set('limit', String(query.limit));
+            if (query.skip) url.searchParams.set('skip', String(query.skip));
+        }
+        const options = { method, headers: { 'Content-Type': 'application/json' } };
+        if (data) options.body = JSON.stringify({ db: DB_NAME, collection, document: data });
+        const res = await fetch(url.toString(), options);
+        if (!res.ok) throw new Error('Mongo API error: ' + res.status);
+        return await res.json();
+    }
+
+    // ===== UI =====
+    async function loadMessages() {
+        const tbody = document.getElementById('messages-container');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        try {
+            const data = await fetchMongo('GET', COLLECTION_NAME, null, { sort: { createdAt: -1 } });
+            const items = Array.isArray(data?.documents || data) ? (data.documents || data) : [];
+            for (const item of items) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="time">${item.createdAt ? new Date(item.createdAt).toLocaleString() : '-'}</td>
+                    <td><span class="badge">${(item.name||'').toString().slice(0,120)}</span></td>
+                    <td>${(item.email||'').toString().slice(0,200)}</td>
+                    <td>${(item.message||'').toString().replace(/</g,'&lt;').slice(0,1000)}</td>
+                    <td><button onclick="deleteMessage('${item._id}')" style="background:#dc2626; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:11px;">삭제</button></td>`;
+                tbody.appendChild(tr);
+            }
+        } catch (e) {
+            // 서버가 없을 때 로컬 저장 폴백 조회
+            const key = 'portfolio.messages';
+            const items = JSON.parse(localStorage.getItem(key) || '[]');
+            if (!items.length) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td colspan="5" style="color:#ff7676; padding:16px;">메시지 로딩 실패 (서버/로컬에 데이터 없음)</td>`;
+                tbody.appendChild(tr);
+                return;
+            }
+            for (const item of items) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="time">${item.createdAt ? new Date(item.createdAt).toLocaleString() : '-'}</td>
+                    <td><span class="badge">${(item.name||'').toString().slice(0,120)}</span></td>
+                    <td>${(item.email||'').toString().slice(0,200)}</td>
+                    <td>${(item.message||'').toString().replace(/</g,'&lt;').slice(0,1000)}</td>
+                    <td><button onclick="deleteLocalMessage(${items.indexOf(item)})" style="background:#dc2626; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:11px;">삭제</button></td>`;
+                tbody.appendChild(tr);
+            }
+        }
+    }
+
+    // 삭제 함수들
+    async function deleteMessage(id) {
+        if (!confirm('정말 삭제하시겠습니까?')) return;
+        try {
+            const url = new URL(API_BASE_URL, window.location.origin);
+            url.searchParams.set('db', DB_NAME);
+            url.searchParams.set('collection', COLLECTION_NAME);
+            url.searchParams.set('id', id);
+            
+            const res = await fetch(url.toString(), {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            
+            if (!res.ok) throw new Error('Delete failed: ' + res.status);
+            loadMessages(); // 새로고침
+        } catch (e) {
+            alert('삭제 실패: ' + e.message);
+        }
+    }
+
+    function deleteLocalMessage(index) {
+        if (!confirm('정말 삭제하시겠습니까?')) return;
+        const key = 'portfolio.messages';
+        const items = JSON.parse(localStorage.getItem(key) || '[]');
+        items.splice(index, 1);
+        localStorage.setItem(key, JSON.stringify(items));
+        loadMessages(); // 새로고침
+    }
+
+    // ===== Login Gate =====
+    (function initLogin(){
+        const overlay = document.getElementById('login-overlay');
+        const btn = document.getElementById('login-btn');
+        const idEl = document.getElementById('admin-id');
+        const pwEl = document.getElementById('admin-pw');
+        const errEl = document.getElementById('login-err');
+
+        function tryLogin(){
+            const id = (idEl.value||'').trim();
+            const pw = (pwEl.value||'').trim();
+            if (id === 'ljy9386' && pw === '!wmfdksk6793') {
+                overlay.style.display = 'none';
+                loadMessages();
+            } else {
+                errEl.textContent = '접근 거부: 아이디 또는 비밀번호가 올바르지 않습니다.';
+            }
+        }
+        btn.addEventListener('click', tryLogin);
+        pwEl.addEventListener('keydown', (e)=>{ if (e.key === 'Enter') tryLogin(); });
+        idEl.focus();
+    })();
+    </script>
+</body>
+</html>
+
+

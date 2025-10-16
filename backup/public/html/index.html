@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEPHSTUDIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="welcome-text">
+                <span class="letter" data-letter="W">W</span>
+                <span class="letter" data-letter="e">e</span>
+                <span class="letter" data-letter="l">l</span>
+                <span class="letter" data-letter="c">c</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter" data-letter="m">m</span>
+                <span class="letter" data-letter="e">e</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <span class="letter" data-letter="t">t</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <span class="letter" data-letter="A">A</span>
+                <span class="letter" data-letter="L">L</span>
+                <span class="letter" data-letter="E">E</span>
+                <span class="letter" data-letter="P">P</span>
+                <span class="letter" data-letter="H">H</span>
+                <span class="letter" data-letter="S">S</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="U">U</span>
+                <span class="letter" data-letter="D">D</span>
+                <span class="letter" data-letter="I">I</span>
+                <span class="letter" data-letter="O">O</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <br>
+                <span class="letter" data-letter="P">P</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter" data-letter="r">r</span>
+                <span class="letter" data-letter="t">t</span>
+                <span class="letter" data-letter="f">f</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter" data-letter="l">l</span>
+                <span class="letter" data-letter="i">i</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <span class="letter" data-letter="W">W</span>
+                <span class="letter" data-letter="e">e</span>
+                <span class="letter" data-letter="b">b</span>
+                <span class="letter" data-letter="s">s</span>
+                <span class="letter" data-letter="i">i</span>
+                <span class="letter" data-letter="t">t</span>
+                <span class="letter" data-letter="e">e</span>
+            </div>
+            <div class="loading-spinner" id="loading-spinner">
+                <div class="spinner"></div>
+                <div class="loading-text">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+    <section class="hero-section">
+        <div class="hero-left">
+            <div class="logo-section reveal reveal-delay-1">
+                <div class="logo-square"></div>
+                <div class="logo-text">ALEPHSTUDIO</div>
+            </div>
+            
+            <div class="location-section reveal reveal-delay-2">
+                <div class="location-text">SEOUL</div>
+                <div class="location-dash"></div>
+                <div class="location-text">GLOBAL</div>
+            </div>
+            
+            <div class="services-section reveal reveal-delay-3">
+                <div class="service-item">WEB DESIGN</div>
+                <div class="service-item">DEVELOPMENT</div>
+                <div class="service-dots">
+                    <div class="main-dot"></div>
+                    <div class="main-dot"></div>
+                    <div class="main-dot"></div>
+                    <div class="main-dot"></div>
+                </div>
+                <div class="service-item">BRANDING</div>
+            </div>
+        </div>
+        
+        <div class="hero-right reveal-scale reveal-delay-4">
+            <div id="three-container" class="three-container"></div>
+        </div>
+    </section>
+            
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-left">
+            <div class="about-content">
+                <!-- Profile Image -->
+                <!-- <div class="profile-image-container reveal reveal-delay-1">
+                    <img src="../img/profile.jpg" alt="Profile" class="profile-image">
+                </div> -->
+                
+                <!-- ALEPHSTUDIO Title -->
+                <div class="hello-section reveal reveal-delay-2">
+                    <!-- <div class="editorial-left">
+                    <div class="editorial-meta-top">
+                        <span class="editorial-year">2025</span>
+                        <h2 class="editorial-title">ALEPHSTUDIO</h2>
+                        <span class="editorial-code"></span>
+                    </div>
+                    </div> -->
+                    <h1 class="hello-title">ALEPHSTUDIO</h1>
+                </div>
+                
+                <!-- Location & Services -->
+                <div class="about-location reveal reveal-delay-3">
+                    <span class="location-text">KOREAN, SEOUL</span>
+                    <span class="location-text">GLOBAL NOW</span>
+                </div>
+                
+                <div class="about-services reveal reveal-delay-4">
+                    <span class="service-text">WEB DESIGN, DEVELOPMENT</span>
+                    <span class="service-text">BRANDING, STRATEGY</span>
+                </div>
+                
+                <!-- About Description -->
+                <div class="about-description reveal reveal-delay-5">
+                    <p>ALEPHSTUDIO is a full-stack developer, web designer, and publisher that focuses on creating digital experiences that connect brands with their audiences. My work combines visual design, front-end publishing, and back-end development to deliver websites that are both aesthetically refined and technically reliable.</p>
+                    <p>I believe in building user-centered and sustainable digital products — where design adapts fluidly, functionality remains uncompromised, and every element serves the end user. My practice emphasizes:</p>
+                    <p>By merging artistic sensibility with engineering discipline, I aim to craft digital solutions that reflect both creativity and innovation, helping brands communicate effectively in the modern web environment.</p>
+                </div>
+            </div>
+        </div>
+        
+                <div class="about-right">
+            <div class="skills-container">
+                <div class="skills-col">
+                <!-- Frontend Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title">Frontend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">TypeScript</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">React</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title">Database</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">MongoDB</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">PostgreSQL</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title">Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Git</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Github</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Figma</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Visual Studio Code</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="skills-col">
+                <!-- Backend Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title">Backend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Node.js</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Express.js</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title">DevOps</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">AWS</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Docker</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Render</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Section: LAND SCAPE 001 -->
+    <section class="editorial-section reveal reveal-delay-1">
+        <div class="editorial-inner">
+            <div class="editorial-left">
+                <div class="editorial-meta-top">
+                    <span class="editorial-year">2025</span>
+                    <h2 class="editorial-title">PORTFOLIO</h2>
+                    <span class="editorial-code"></span>
+                </div>
+
+                <div class="editorial-vertical">
+                    <span>&lt;ALPHA PORTFOLIO&gt;</span>
+                    <span>- 2025</span>
+                    <span>SERVICES & PROJECTS</span>
+                    <span>WEB DESIGN & DEVELOPMENT</span>
+                    <span>BRANDING</span>
+                    <span>PUBLISHING</span>
+                </div>
+
+                <div class="editorial-vertical-bottom">
+                    <span>MEDIA ART</span>
+                    <span>PERFORMANCE</span>
+                </div>
+            </div>
+
+            <div class="editorial-right">
+                <div class="editorial-grid reveal reveal-delay-1">
+                    <a href="portfolio.html" class="editorial-card">
+                        <img src="../img/1.png" alt="Project 1" class="card-image">
+                    </a>
+                    <a href="portfolio.html" class="editorial-card">
+                        <img src="../img/2.png" alt="Project 2" class="card-image">
+                    </a>
+                    <a href="portfolio.html" class="editorial-card">
+                        <img src="../img/3.png" alt="Project 3" class="card-image">
+                    </a>
+                    <a href="portfolio.html" class="editorial-card">
+                        <img src="../img/4.png" alt="Project 4" class="card-image">
+                    </a>
+                </div>
+                <div class="editorial-caption">@ALEPHSTUDIO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-inner">
+            <div class="contact-left">
+                <div class="contact-content">
+                    <h2 class="contact-title reveal reveal-delay-1">CONTACT</h2>
+                    <p class="contact-subtitle reveal reveal-delay-2">프로젝트 문의나 협업 제안이 있으시다면 언제든 연락해주세요.</p>
+                </div>
+            </div>
+            
+            <div class="contact-right">
+                <form class="contact-form reveal reveal-delay-3">
+                    <div class="form-group">
+                        <label for="name" class="form-label">NAME</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-MAIL</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">MESSAGE</label>
+                        <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                </form>
+                
+                <div class="contact-buttons reveal reveal-delay-4">
+                    <a href="mailto:aa10542510@gmail.com" target="_blank" class="contact-btn kakao-btn">
+                        <img src="../img/icon2.png" alt="Kakao" class="btn-icon">
+                        <!-- <span class="btn-text">MESSAGE</span> -->
+                    </a>
+                    <a href="https://open.kakao.com/o/sYq7JIUh" class="contact-btn email-btn">
+                        <img src="../img/icon1.png" alt="Kakao" class="btn-icon">
+                        <!-- <span class="btn-text">E-MAIL</span> -->
+                    </a>
+                    <a href="https://www.instagram.com/alephstudio/?next=%2F" class="contact-btn email-btn">
+                        <img src="../img/icon3.png" alt="Kakao" class="btn-icon">
+                        <!-- <span class="btn-text">E-MAIL</span> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <!-- Portfolio Floating Button -->
+    <div class="portfolio-floating-btn" id="portfolio-floating-btn">
+        <a href="portfolio.html" class="portfolio-btn">
+            <span class="btn-text">VIEW PORTFOLIO</span>
+            <div class="btn-arrow">→</div>
+        </a>
+    </div>
+
+    <script src="../js/index.js"></script>
+</body>
+</html>

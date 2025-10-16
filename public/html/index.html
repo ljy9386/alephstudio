@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEPHSTUDIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="loading-screen-active">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="welcome-text">
+                <span class="letter" data-letter="W">W</span>
+                <span class="letter" data-letter="e">e</span>
+                <span class="letter" data-letter="l">l</span>
+                <span class="letter" data-letter="c">c</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter" data-letter="m">m</span>
+                <span class="letter" data-letter="e">e</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <span class="letter" data-letter="t">t</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <span class="letter" data-letter="A">A</span>
+                <span class="letter" data-letter="L">L</span>
+                <span class="letter" data-letter="E">E</span>
+                <span class="letter" data-letter="P">P</span>
+                <span class="letter" data-letter="H">H</span>
+                <span class="letter" data-letter="S">S</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="U">U</span>
+                <span class="letter" data-letter="D">D</span>
+                <span class="letter" data-letter="I">I</span>
+                <span class="letter" data-letter="O">O</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <br>
+                <span class="letter" data-letter="P">P</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter" data-letter="r">r</span>
+                <span class="letter" data-letter="t">t</span>
+                <span class="letter" data-letter="f">f</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter" data-letter="l">l</span>
+                <span class="letter" data-letter="i">i</span>
+                <span class="letter" data-letter="o">o</span>
+                <span class="letter space" data-letter=" ">&nbsp;</span>
+                <span class="letter" data-letter="W">W</span>
+                <span class="letter" data-letter="e">e</span>
+                <span class="letter" data-letter="b">b</span>
+                <span class="letter" data-letter="s">s</span>
+                <span class="letter" data-letter="i">i</span>
+                <span class="letter" data-letter="t">t</span>
+                <span class="letter" data-letter="e">e</span>
+            </div>
+            <div class="loading-spinner" id="loading-spinner">
+                <div class="spinner"></div>
+                <div class="loading-text">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+    <section class="hero-section">
+        <div class="hero-left">
+            <div class="logo-section reveal reveal-delay-1">
+                <div class="logo-square"></div>
+                <div class="logo-text">ALEPHSTUDIO</div>
+            </div>
+            
+            <div class="location-section reveal reveal-delay-2">
+                <div class="location-text">SEOUL</div>
+                <div class="location-dash"></div>
+                <div class="location-text">GLOBAL</div>
+            </div>
+            
+            <div class="services-section reveal reveal-delay-3">
+                <div class="service-item">WEB DESIGN</div>
+                <div class="service-item">DEVELOPMENT</div>
+                <div class="service-dots">
+                    <div class="main-dot"></div>
+                    <div class="main-dot"></div>
+                    <div class="main-dot"></div>
+                    <div class="main-dot"></div>
+                </div>
+                <div class="service-item">BRANDING</div>
+            </div>
+        </div>
+        
+        <div class="hero-right reveal-scale reveal-delay-4">
+            <div id="three-container" class="three-container"></div>
+        </div>
+    </section>
+            
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-left">
+            <div class="about-content">
+                <!-- ALEPHSTUDIO Title -->
+                <div class="hello-section reveal reveal-delay-2">
+                    <h1 class="hello-title">ALEPHSTUDIO</h1>
+                </div>
+                <!-- Location & Services -->
+                <div class="about-location reveal reveal-delay-3">
+                    <span class="location-text">KOREAN, SEOUL</span>
+                    <span class="location-text">GLOBAL NOW</span>
+                </div>
+                
+                <div class="about-services reveal reveal-delay-4">
+                    <span class="service-text">WEB DESIGN, DEVELOPMENT</span>
+                    <span class="service-text">BRANDING, STRATEGY</span>
+                </div>
+                
+                <!-- About Description -->
+                <div class="about-description reveal reveal-delay-5">
+                    <p>ALEPHSTUDIO is a full-stack developer, web designer, and publisher that focuses on creating digital experiences that connect brands with their audiences. My work combines visual design, front-end publishing, and back-end development to deliver websites that are both aesthetically refined and technically reliable.</p>
+                    <p>I believe in building user-centered and sustainable digital products — where design adapts fluidly, functionality remains uncompromised, and every element serves the end user. My practice emphasizes:</p>
+                    <p>By merging artistic sensibility with engineering discipline, I aim to craft digital solutions that reflect both creativity and innovation, helping brands communicate effectively in the modern web environment.</p>
+                </div>
+            </div>
+        </div>
+        
+                <div class="about-right">
+            <div class="skills-container">
+                <div class="skills-col">
+                <!-- Frontend Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title reveal reveal-delay-1">Frontend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">TypeScript</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">React</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title reveal reveal-delay-1">Database</h3>
+                    <div class="skills-list">
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">MongoDB</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">PostgreSQL</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title reveal reveal-delay-1">Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Git</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Github</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Figma</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Visual Studio Code</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="skills-col">
+                <!-- Backend Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title reveal reveal-delay-1">Backend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Node.js</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Express.js</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps Section -->
+                <div class="skills-section">
+                    <h3 class="skills-title reveal reveal-delay-1">DevOps</h3>
+                    <div class="skills-list">
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">AWS</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Docker</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item reveal">
+                            <div class="skill-header">
+                                <span class="skill-name">Render</span>
+                            </div>
+                            <div class="skill-rating">
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot filled"></span>
+                                <span class="dot empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO Section -->
+    <section class="maskarite-section reveal reveal-delay-1">
+        <div class="maskarite-inner">
+            <div class="maskarite-left">
+                <div class="maskarite-number">01</div>
+                <h1 class="maskarite-title">OBO<br>DESIGN AGENCY</h1>
+            </div>
+            
+            <div class="maskarite-right">
+                <div class="maskarite-info">
+                    <div class="info-item">
+                        <div class="info-label">OBO</div>
+                        <div class="info-value">DESIGN AGENCY</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">YEARS</div>
+                        <div class="info-value">2025</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">CONCEPT</div>
+                        <div class="info-value">SUSTAINABLE<br>FASHION ART</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Image Section -->
+    <section class="portfolio-image-section"id="skills">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main1.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>
+    <section class="portfolio-image-section">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main2.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>
+    <section class="portfolio-image-section">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main2.5.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>    
+    <section class="portfolio-image-section">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main3.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>
+    <section class="portfolio-image-section">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main4.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>
+
+    <!-- PORTFOLIO Section -->
+    <section class="maskarite-section reveal reveal-delay-1">
+        <div class="maskarite-inner">
+            <div class="maskarite-left">
+                <div class="maskarite-number">02</div>
+                <h1 class="maskarite-title">Étoile<br>Fashion Magazine</h1>
+            </div>
+            
+            <div class="maskarite-right">
+                <div class="maskarite-info">
+                    <div class="info-item">
+                        <div class="info-label">Étoile</div>
+                        <div class="info-value">Fashion Magazine</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">YEARS</div>
+                        <div class="info-value">2025</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">CONCEPT</div>
+                        <div class="info-value">FASHION<br>MAGAZINE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Image Section -->
+    <section class="portfolio-image-section">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main5.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>
+
+    <!-- PORTFOLIO Section -->
+    <section class="maskarite-section reveal reveal-delay-1">
+        <div class="maskarite-inner">
+            <div class="maskarite-left">
+                <div class="maskarite-number">03</div>
+                <h1 class="maskarite-title">WHIMSY STUDIO<br>INTERIOR DESIGN</h1>
+            </div>
+            
+            <div class="maskarite-right">
+                <div class="maskarite-info">
+                    <div class="info-item">
+                        <div class="info-label">WHIMSY STUDIO</div>
+                        <div class="info-value">Interior Design</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">YEARS</div>
+                        <div class="info-value">2025</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">CONCEPT</div>
+                        <div class="info-value">INTERIOR<br>DESIGN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Image Section -->
+    <section class="portfolio-image-section">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main6.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>
+
+    <!-- PORTFOLIO Section -->
+    <section class="maskarite-section reveal reveal-delay-1">
+        <div class="maskarite-inner">
+            <div class="maskarite-left">
+                <div class="maskarite-number">04</div>
+                <h1 class="maskarite-title">ATÉLIER<br>Art Exhibition Web Magazine</h1>
+            </div>
+            
+            <div class="maskarite-right">
+                <div class="maskarite-info">
+                    <div class="info-item">
+                        <div class="info-label">ATÉLIER</div>
+                        <div class="info-value">Art Exhibition Web Magazine</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">YEARS</div>
+                        <div class="info-value">2024</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">CONCEPT</div>
+                        <div class="info-value">ART<br>EXHIBITION<br>WEB MAGAZINE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Image Section -->
+    <section class="portfolio-image-section">
+        <div class="portfolio-image-container reveal reveal-delay-1">
+            <img src="../img/main7.png" alt="MASKARITE BROOCH product photo" class="portfolio-main-image">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-inner">
+            <div class="contact-left">
+                <div class="contact-content">
+                    <h2 class="contact-title reveal reveal-delay-1">CONTACT</h2>
+                    <p class="contact-subtitle reveal reveal-delay-2">For project inquiries, please use the message form on the right.</p>
+                </div>
+            </div>
+            
+            <div class="contact-right">
+                <form id="contact-form" class="contact-form reveal reveal-delay-3" onsubmit="return submitMessage(event)" action="javascript:void(0)">
+                    <div class="form-group">
+                        <label for="name" class="form-label">NAME</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-MAIL</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">MESSAGE</label>
+                        <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="button" class="submit-btn" onclick="submitMessage(event)">SEND MESSAGE</button>
+                    <div id="status-message" class="status-message"></div>
+                </form>
+                
+                <div class="contact-buttons reveal reveal-delay-4">
+                    <a href="#" role="button" class="contact-btn kakao-btn">
+                        <img src="../img/icon2.png" alt="Kakao" class="btn-icon">
+                        <!-- <span class="btn-text">MESSAGE</span> -->
+                    </a>
+                    <a href="#" role="button" class="contact-btn email-btn">
+                        <img src="../img/icon1.png" alt="Kakao" class="btn-icon">
+                        <!-- <span class="btn-text">E-MAIL</span> -->
+                    </a>
+                    <a href="#" role="button" class="contact-btn email-btn">
+                        <img src="../img/icon3.png" alt="Kakao" class="btn-icon">
+                        <!-- <span class="btn-text">E-MAIL</span> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <!-- Portfolio Floating Button -->
+    <div class="portfolio-floating-btn" id="portfolio-floating-btn">
+        <a href="#skills" class="portfolio-btn" id="view-portfolio-link">
+            <span class="btn-text">VIEW PORTFOLIO</span>
+            <div class="btn-arrow">→</div>
+        </a>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop autoplay>
+        <source src="../music/tech-house.mp3" type="audio/mpeg">
+        <source src="../music/tech-house.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Widget -->
+    <div id="music-widget" class="music-widget">
+        <div class="music-icon" id="music-icon">
+            <img src="../img/music.gif" alt="Music Control" class="music-icon-img">
+        </div>
+        <div class="music-controls" id="music-controls">
+            <button class="music-toggle" id="music-toggle">
+                <span class="toggle-text">PLAY</span>
+            </button>
+            <div class="volume-container">
+                <span class="volume-label">VOL</span>
+                <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="50">
+                <span class="volume-value" id="volume-value">50</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/index.js"></script>
+    <script>
+    // Mongo 설정
+    const API_BASE_URL = 'http://localhost:4000/api/v1/mongo/collection';
+    const DB_NAME = 'portfolioDB';
+    const COLLECTION_NAME = 'messages';
+
+    async function fetchMongo(method, collection, data = null, query = {}) {
+        const url = new URL(API_BASE_URL, window.location.origin);
+        url.searchParams.set('db', DB_NAME);
+        url.searchParams.set('collection', collection);
+        if (query && Object.keys(query).length) {
+            url.searchParams.set('query', JSON.stringify(query.filter || {}));
+            if (query.sort) url.searchParams.set('sort', JSON.stringify(query.sort));
+            if (query.limit) url.searchParams.set('limit', String(query.limit));
+            if (query.skip) url.searchParams.set('skip', String(query.skip));
+        }
+        const options = { method, headers: { 'Content-Type': 'application/json' } };
+        if (data) options.body = JSON.stringify({ db: DB_NAME, collection, document: data });
+        const res = await fetch(url.toString(), options);
+        if (!res.ok) throw new Error('Mongo API error: ' + res.status);
+        return await res.json();
+    }
+
+    function setStatusMessage(msg){
+        const statusEl = document.getElementById('status-message');
+        if (statusEl) {
+            statusEl.textContent = msg;
+            statusEl.style.display = 'block';
+            statusEl.style.opacity = '1';
+            
+            // 3초 후 자동 숨김
+            setTimeout(() => {
+                statusEl.style.opacity = '0';
+                setTimeout(() => {
+                    statusEl.style.display = 'none';
+                }, 300);
+            }, 3000);
+        }
+    }
+
+    // 폼 제출
+    async function submitMessage(event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        
+        const form = document.getElementById('contact-form');
+        const name = (document.getElementById('name')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const message = (document.getElementById('message')?.value || '').trim();
+        
+        if (!name || !email || !message) {
+            setStatusMessage('모든 필드를 입력해 주세요.');
+            return;
+        }
+        
+        const doc = { name, email, message, createdAt: new Date().toISOString() };
+        
+        try {
+            setStatusMessage('전송 중...');
+            await fetchMongo('POST', COLLECTION_NAME, doc);
+            setStatusMessage("Your message has been sent. We'll get back to you by email soon.");
+            if (form) form.reset();
+        } catch (e) {
+            // 서버가 없을 때 로컬 저장 폴백
+            const key = 'portfolio.messages';
+            const arr = JSON.parse(localStorage.getItem(key) || '[]');
+            arr.unshift(doc);
+            localStorage.setItem(key, JSON.stringify(arr));
+            setStatusMessage("Your message has been sent. We'll get back to you by email soon.");
+            if (form) form.reset();
+        }
+        
+        return false;
+    }
+    </script>
+
+    <script>
+    // Smooth scroll fallback for browsers without CSS scroll-behavior
+    (function(){
+        const link = document.getElementById('view-portfolio-link');
+        const target = document.getElementById('skills');
+        if (link && target) {
+            link.addEventListener('click', function(e){
+                // if we're on same page anchor, prevent default and smooth scroll
+                if (this.getAttribute('href') === '#skills') {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
