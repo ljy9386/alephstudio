@@ -1,20 +1,28 @@
 {
-  "name": "alephstudio-portfolio-site-project",
+  "name": "alephstudio-portfolio",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node PORTFOLIO/public/js/server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "ALEPH Studio Portfolio Website with MongoDB integration",
+  "main": "src/server.js",
   "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "mongodb": "^6.20.0"
-  }
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "portfolio",
+    "express",
+    "mongodb",
+    "alephstudio"
+  ],
+  "author": "ALEPH Studio",
+  "license": "MIT"
 }
